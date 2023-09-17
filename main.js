@@ -14,7 +14,7 @@ function createWindow () {
     maximizable: true,
     autoHideMenuBar: true,
     center: true,
-    opacity: 0.92,
+    opacity: 0.95,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -23,7 +23,7 @@ function createWindow () {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('produtos/produtos.html')
+  mainWindow.loadFile('cadastroPet/cadastroPet.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

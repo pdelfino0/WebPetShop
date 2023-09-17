@@ -13,13 +13,27 @@
     <nav class="bg-blue-900 text-white sticky">
       <div class="container mx-auto py-4">
         <div class="flex justify-center space-x-8">
-          <a href="../home/home.html" class="text-xl font-semibold hover:underline">Início</a>
+          <a
+            href="../home/home.html"
+            class="text-xl font-semibold hover:underline"
+            >Início</a
+          >
           <a
             href="../produtos/produtos.html"
             class="text-xl font-semibold hover:underline"
             >Produtos</a
           >
-          <a href="../servicos/servicos.html" class="text-xl font-semibold hover:underline">Serviços</a>
+          <a
+            href="../servicos/servicos.html"
+            class="text-xl font-semibold hover:underline"
+            >Serviços</a
+          >
+          <a
+            href="../cadastroPet/cadastroPet.html"
+            class="text-xl font-semibold hover:underline"
+            >Cadastro de Pet</a
+          >
+
           <a href="#" class="text-xl font-semibold hover:underline">Contato</a>
         </div>
       </div>
@@ -71,7 +85,9 @@
               productInfo.innerHTML = `
                 <h2 class="text-xl font-semibold">${product.nome}</h2>
                 <p class="text-gray-700">${product.descricao}</p>
-                <p class="text-blue-600 font-semibold mt-2">R$ ${product.preco.toFixed(2)}</p>
+                <p class="text-blue-600 font-semibold mt-2">R$ ${product.preco.toFixed(
+                  2
+                )}</p>
               `;
 
               productDiv.appendChild(productInfo);

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agendamento de Consulta</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <!-- Navbar (opcional) -->
+    <nav class="bg-blue-900 text-white">
+      <div class="container mx-auto py-4">
+        <div class="flex justify-center space-x-8">
+          <a href="#" class="text-xl font-semibold hover:underline">Início</a>
+          <a
+            href="../produtos/produtos.html"
+            class="text-xl font-semibold hover:underline"
+            >Produtos</a
+          >
+          <a
+            href="../servicos/servicos.html"
+            class="text-xl font-semibold hover:underline"
+            >Serviços</a
+          >
+          <a
+            href="../cadastroPet/cadastroPet.html"
+            class="text-xl font-semibold hover:underline"
+            >Cadastro de Pet</a
+          >
+          <a href="#" class="text-xl font-semibold hover:underline">Contato</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Conteúdo da Página -->
+    <div class="container mx-auto my-8 px-4">
+      <h1 class="text-3xl font-semibold mb-6">Agendamento de Serviço</h1>
+
+      <!-- Formulário de Agendamento -->
+      <!-- Formulário de Agendamento -->
+      <form id="consultaForm" class="bg-white p-4 shadow-md rounded">
+        <div class="mb-4">
+          <label for="nomePet" class="block text-gray-700 font-semibold"
+            >Nome do Pet:</label
+          >
+          <select id="nomePet"></select>
+        </div>
+        <div class="mb-4">
+          <label for="data" class="block text-gray-700 font-semibold"
+            >Data da Consulta:</label
+          >
+          <input
+            type="date"
+            id="data"
+            name="data"
+            class="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="horario" class="block text-gray-700 font-semibold"
+            >Horário da Consulta:</label
+          >
+          <input
+            type="time"
+            id="horario"
+            name="horario"
+            class="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="servico" class="block text-gray-700 font-semibold"
+            >Serviço:</label
+          >
+          <select
+            id="servico"
+            name="servico"
+            class="w-full p-2 border border-gray-300 rounded"
+            required
+          >
+            <option value="" disabled selected>Selecione o serviço</option>
+            <!-- Adicione outras especialidades conforme necessário -->
+          </select>
+        </div>
+        <!-- Novo campo para exibir o preço do serviço -->
+
+        <div>
+          <label> Gostaria de tele-busca? </label>
+          <input type="checkbox" />
+        </div>
+        <div class="mb-4">
+          <label for="preco" class="block text-gray-700 font-semibold"
+            >Preço do Serviço:</label
+          >
+          <input
+            type="text"
+            id="preco"
+            name="preco"
+            class="w-full p-2 border border-gray-300 rounded"
+            readonly
+          />
+        </div>
+        <div
+          id="confirmationMessage"
+          class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded mt-4"
+        >
+          Sua consulta foi agendada com sucesso!
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="bg-blue-900 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700"
+          >
+            Agendar Consulta
+          </button>
+        </div>
+      </form>
+
+      <!-- Script para processar o formulário (você precisará adicionar o código JavaScript) -->
+      <script>
+        // Inicialize a variável telebuscapreco
+        let telebuscapreco = 0;
+
+        document.addEventListener("DOMContentLoaded", function () {
+          // Recupere os dados do pet armazenados no Armazenamento Local
+          const petJSON = localStorage.getItem("petData");
+          if (petJSON) {
+            const petData = JSON.parse(petJSON);
+
+            // Preencha o campo de seleção do nome do pet com os dados do pet
+            const selectPet = document.getElementById("nomePet");
+            const petOption = document.createElement("option");
+            petOption.value = petData.nome;
+            petOption.textContent = petData.nome;
+            selectPet.appendChild(petOption);
+          }
+
+          // Preencha o campo de seleção do serviço e do preço do serviço
+          const selectServico = document.getElementById("servico");
+          const inputPreco = document.getElementById("preco");
+
+          fetch("../dados/services.json")
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Erro ao buscar serviços: " + response.status);
+              }
+              return response.json();
+            })
+            .then((data) => {
+              data.servicos.forEach((service) => {
+                const option = document.createElement("option");
+                option.value = service.nome;
+                option.textContent = service.nome;
+                // Adicione o preço como um atributo personalizado
+                option.setAttribute("data-preco", service.preco);
+                selectServico.appendChild(option);
+              });
+
+              // Atualize o preço quando a opção for alterada
+              selectServico.addEventListener("change", function () {
+                const selectedOption =
+                  selectServico.options[selectServico.selectedIndex];
+                const preco =
+                  parseFloat(selectedOption.getAttribute("data-preco")) +
+                  telebuscapreco; // Adicione o preço da tele-busca, se aplicável
+                inputPreco.value = preco;
+              });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const telebusca = document.getElementById("tele-busca");
+          telebusca.addEventListener("change", function () {
+            if (telebusca.checked) {
+              telebuscapreco = 20; // Define o preço da tele-busca como 20 quando selecionado
+            } else {
+              telebuscapreco = 0; // Define o preço de volta para 0 quando desmarcado
+            }
+
+            // Atualize o preço com base na seleção do serviço
+            const selectServico = document.getElementById("servico");
+            const selectedOption =
+              selectServico.options[selectServico.selectedIndex];
+            const preco =
+              parseFloat(selectedOption.getAttribute("data-preco")) +
+              telebuscapreco;
+            inputPreco.value = preco;
+          });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const consultaForm = document.getElementById("consultaForm");
+          consultaForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            // Coleta os valores do formulário
+            const nomePet = document.getElementById("nomePet").value; // Nome do pet selecionado
+            const data = document.getElementById("data").value;
+            const horario = document.getElementById("horario").value;
+            const especialidade = document.getElementById("servico").value; // Aqui você deve usar o ID "servico" em vez de "especialidade"
+            const preco = document.getElementById("preco").value; // Preço do serviço selecionado
+
+            // Você pode fazer o que quiser com os dados, como enviá-los para um servidor
+            // Neste exemplo, apenas exibiremos os dados no console
+            console.log("Nome do Pet:", nomePet);
+            console.log("Data da Consulta:", data);
+            console.log("Horário da Consulta:", horario);
+            console.log("Especialidade:", especialidade);
+            console.log("Preço do Serviço:", preco);
+
+            const confirmationMessage = document.getElementById(
+              "confirmationMessage"
+            );
+            confirmationMessage.classList.remove("hidden");
+
+            // Dentro do bloco de código que lida com o envio do formulário e exibe a mensagem de confirmação
+            setTimeout(() => {
+              confirmationMessage.classList.add("hidden");
+            }, 5000); // A mensagem será ocultada após 5 segundos (5000 milissegundos)
+
+            // Limpa o formulário
+            consultaForm.reset();
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>
