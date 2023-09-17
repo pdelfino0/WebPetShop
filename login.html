@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Formulário de Login</title>
+</head>
+  <body class="bg-gray-100 flex justify-center items-center h-screen">
+    <div class="bg-white p-8 rounded-xl shadow-md w-96">
+      <h1 class="text-2xl font-semibold mb-4">Acesse à WebPetShop</h1>
+      <form id="loginForm">
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-semibold mb-2"
+            >E-mail</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="w-full border border-gray-300 rounded-xl px-3 py-2"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700 font-semibold mb-2"
+            >Senha</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="w-full border border-gray-300 rounded-xl px-3 py-2"
+          />
+        </div>
+      </form>
+      <div class="flex items-center gap-2">
+        <p>Esqueceu a senha?    </p>
+        <a href="esqueceuSenha.html" >Clique <u class="text-blue-500">aqui!</u></a>
+
+      </div>
+      <br>
+      <hr>
+
+      <div class="flex justify-center mt-4">
+        <button
+          type="submit"
+          form="loginForm"
+          class="w-48 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-800 py-2"
+        >
+          Entrar
+        </button>
+      </div>
+
+      <div class="mt-4 text-center">
+        <p>
+          Não tem uma conta?
+          <a href="register.html" class="text-blue-500 hover:underline">Registrar</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const loginForm = document.getElementById("loginForm");
+
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        if (email === "" || password === "") {
+          alert("Preencha todos os campos");
+          return false;
+        } else {
+          alert("Login realizado com sucesso");
+          window.location.href = " home.html";
+        }
+
+        // Aqui você pode adicionar a lógica de autenticação
+        // Por exemplo, verificar o e-mail e a senha fornecidos
+
+        // Após a autenticação bem-sucedida, redirecione o usuário ou realize as ações necessárias
+        // Por exemplo, redirecionar para uma página de perfil
+      });
+    </script>
+  </body>
+</html>

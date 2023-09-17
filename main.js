@@ -2,18 +2,28 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 
+
+
+
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    resizable: true,
+    maximizable: true,
+    autoHideMenuBar: true,
+    center: true,
+    opacity: 0.92,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      contextIsolation: false,
     }
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('produtos/produtos.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

@@ -1,0 +1,35 @@
+{
+    "servicos": [
+      {
+        "id": 1,
+        "nome": "Banho e Tosa",
+        "descricao": "Banho completo e tosa para cães de todas as raças e tamanhos.",
+        "imagem_url": "https://www.hospitalvetitaquera.com.br/wp-content/uploads/2020/07/estetica.png"
+      },
+      {
+        "id": 2,
+        "nome": "Consulta Veterinária",
+        "descricao": "Consulta com veterinário experiente para cuidar da saúde do seu pet.",
+        "imagem_url": "https://veterinario.vidapets.com.br/imagens/diagnostico-por-imagem-veterinaria-marcar.jpg"
+      },
+      {
+        "id": 3,
+        "nome": "Hotel para Animais",
+        "descricao": "Acomodações confortáveis para o seu pet enquanto você está fora.",
+        "imagem_url": "https://g1.globo.com/Noticias/SaoPaulo/foto/0,,33467556-EX,00.jpg"
+      },
+      {
+        "id": 4,
+        "nome": "Passeios Diários",
+        "descricao": "Passeios divertidos e saudáveis para manter seu cão ativo e feliz.",
+        "imagem_url": "https://www.patasdacasa.com.br/sites/default/files/noticias/2019/10/passear-com-cachorro-9-motivos-para-nao-deixar-o-passeio-de-lado.jpg"
+      },
+      {
+        "id": 5,
+        "nome": "Adestramento",
+        "descricao": "Treinamento especializado para melhorar o comportamento do seu pet.",
+        "imagem_url": "https://img.freepik.com/fotos-gratis/homem-treinando-seus-dois-caes-ao-ar-livre_23-2149448219.jpg"
+      }
+    ]
+  }
+  

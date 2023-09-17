@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Produtos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <nav class="bg-blue-900 text-white sticky">
+      <div class="container mx-auto py-4">
+        <div class="flex justify-center space-x-8">
+          <a href="../home/home.html" class="text-xl font-semibold hover:underline">Início</a>
+          <a
+            href="../produtos/produtos.html"
+            class="text-xl font-semibold hover:underline"
+            >Produtos</a
+          >
+          <a href="../servicos/servicos.html" class="text-xl font-semibold hover:underline">Serviços</a>
+          <a href="#" class="text-xl font-semibold hover:underline">Contato</a>
+        </div>
+      </div>
+    </nav>
+    <h1 class="text-3xl font-semibold my-6 text-center">Lista de Produtos</h1>
+    <div class="flex flex-col gap-4 items-center">
+      <div class="w-full max-w-md p-4 bg-white rounded-lg shadow-md">
+        <div class="text-lg font-semibold">Nossos Produtos</div>
+
+        <!-- JavaScript irá adicionar os produtos aqui -->
+        <div class="products space-y-4 mt-4">
+          <!-- Itens de produtos serão adicionados dinamicamente aqui -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("../dados/products.json")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Erro ao buscar produtos: " + response.status);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const productsContainer = document.querySelector(".products");
+            data.produtos.forEach((product) => {
+              const productDiv = document.createElement("div");
+              productDiv.classList.add(
+                "p-4",
+                "bg-white",
+                "rounded-lg",
+                "shadow-md",
+                "flex", // Adiciona flex para criar um layout de grid
+                "items-center" // Alinha os itens verticalmente no centro
+              );
+
+              // Adicione a imagem ao produto
+              const productImage = document.createElement("img");
+              productImage.setAttribute("src", product.imagem_url);
+              productImage.setAttribute("alt", product.nome);
+              productImage.classList.add("w-32", "h-auto", "mr-4"); // Tamanho da imagem
+              productDiv.appendChild(productImage);
+
+              const productInfo = document.createElement("div");
+              productInfo.classList.add("flex", "flex-col"); // Cria uma coluna para informações
+
+              productInfo.innerHTML = `
+                <h2 class="text-xl font-semibold">${product.nome}</h2>
+                <p class="text-gray-700">${product.descricao}</p>
+                <p class="text-blue-600 font-semibold mt-2">R$ ${product.preco.toFixed(2)}</p>
+              `;
+
+              productDiv.appendChild(productInfo);
+              productsContainer.appendChild(productDiv);
+            });
+          })
+          .catch((error) => {
+            console.error(error.message);
+          });
+      });
+    </script>
+  </body>
+</html>

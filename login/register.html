@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Usuário</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 flex justify-center items-center h-screen">
+    <div class="bg-white p-8 rounded-xl shadow-md w-96">
+      <h1 class="text-2xl font-semibold mb-4">Cadastro de Usuário</h1>
+      <form id="signupForm">
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 font-semibold mb-2"
+            >Nome</label
+          >
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="w-full border border-gray-300 rounded-xl px-3 py-2"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-semibold mb-2"
+            >E-mail</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="w-full border border-gray-300 rounded-xl px-3 py-2"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700 font-semibold mb-2"
+            >Senha</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="w-full border border-gray-300 rounded-xl px-3 py-2"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            for="confirmPassword"
+            class="block text-gray-700 font-semibold mb-2"
+            >Confirmar Senha</label
+          >
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            class="w-full border border-gray-300 rounded-xl px-3 py-2"
+            required
+          />
+        </div>
+        <div class="flex items-center justify-between">
+          <button
+            type="submit"
+            class="bg-blue-500 text-white font-semibold px-4 py-2 rounded-xl hover:bg-blue-600 focus:outline-none focus:bg-blue-600 mt-4 mx-auto"
+          >
+            Cadastrar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const signupForm = document.getElementById("signupForm");
+
+      signupForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Valide os campos de senha para garantir que sejam iguais
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        const email = document.getElementById("email").value; // Corrigindo a variável email
+
+        if (password !== confirmPassword) {
+          alert("As senhas não coincidem.");
+          return;
+        }
+
+        function userExists(email) {
+          return localStorage.getItem(email) !== null;
+        }
+
+        function saveUser(email, password) {
+          localStorage.setItem(email, password);
+        }
+
+        if (!userExists(email)) {
+          saveUser(email, password);
+          alert("Registro bem-sucedido.");
+          // Você pode adicionar a lógica de envio do formulário para criar o usuário aqui
+          // Por exemplo, enviar os dados para um servidor ou armazená-los localmente
+
+          // Após o cadastro bem-sucedido, redirecione o usuário ou realize as ações necessárias
+          // Por exemplo, redirecionar para a página de login
+          window.location.href = "login.html"; // Substitua "login.html" pelo URL de destino desejado
+        } else {
+          alert("Nome de usuário já existe.");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 {
-  "name": "electron-quick-start",
+  "name": "WebPetShop",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "Um projeto de WebApp para a disciplina de Fundamentos Web do curso de Análise e Desenvolvimento de Sistemas da Pontifícia Universidade Católica do Rio Grande do Sul",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
@@ -14,9 +14,16 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": "Pedro Delfino",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^26.2.0"
+    "autoprefixer": "^10.4.15",
+    "electron": "^26.2.0",
+    "postcss-loader": "^7.3.3",
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "electron-reload": "^2.0.0-alpha.1"
   }
 }

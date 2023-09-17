@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Petshop - Produtos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <style>
+      /* Estilos CSS personalizados podem ser adicionados aqui */
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-blue-900 text-white">
+      <div class="container mx-auto py-4">
+        <div class="flex justify-center space-x-8">
+          <a
+            href="../home/home.html"
+            class="text-xl font-semibold hover:underline"
+            >Início</a
+          >
+          <a
+            href="../produtos/produtos.html"
+            class="text-xl font-semibold hover:underline"
+            >Produtos</a
+          >
+          <a href="../servicos/" class="text-xl font-semibold hover:underline"
+            >Serviços</a
+          >
+          <a href="#" class="text-xl font-semibold hover:underline">Contato</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Pesquisa -->
+    <div class="container mx-auto my-8 flex items-center justify-end">
+      <h2 class="text-2xl font-semibold mb-4">Buscar:</h2>
+      <div class="bg-white border border-gray-300 rounded p-2 max-w-md">
+        <input
+          type="text"
+          id="searchInput"
+          class="w-full p-2 border-none outline-none"
+          placeholder="Pesquisar..."
+        />
+        <div id="searchResults" class="mt-2">
+          <!-- Os resultados da pesquisa serão exibidos aqui -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Conteúdo da Página -->
+    <div class="container mx-auto my-8 px-4">
+      <h1 class="text-3xl font-semibold mb-6">Nossos Produtos</h1>
+
+      <!-- Espaço para Produtos -->
+      <div id="productsContainer" class="grid grid-cols-2 gap-4">
+        <!-- Os produtos serão adicionados dinamicamente aqui -->
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("../dados/products.json")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Erro ao buscar produtos: " + response.status);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const productsContainer =
+              document.getElementById("productsContainer");
+
+            // Exibe apenas os dois primeiros produtos
+            for (let i = 0; i < 2 && i < data.produtos.length; i++) {
+              const product = data.produtos[i];
+              const productDiv = document.createElement("div");
+              productDiv.classList.add(
+                "bg-white",
+                "p-4",
+                "mb-4",
+                "shadow-md",
+                "flex"
+              );
+
+              // Adicione a imagem ao produto
+              const productImage = document.createElement("img");
+              productImage.setAttribute("src", product.imagem_url);
+              productImage.setAttribute("alt", product.nome);
+              productImage.classList.add(
+                "my-2",
+                "mx-auto",
+                "ml-16",
+                "h-48",
+                "w-48"
+              );
+
+              // Crie a seção de informações do produto
+              const productInfo = document.createElement("div");
+              productInfo.classList.add("w-3/4", "pl-4");
+
+              // Preencha as informações do produto
+              const productName = document.createElement("h2");
+              productName.classList.add("text-xl", "font-semibold", "mb-2");
+              productName.textContent = product.nome;
+
+              const productDescription = document.createElement("p");
+              productDescription.classList.add("text-gray-700", "mb-2");
+              productDescription.textContent = product.descricao;
+
+              const productPrice = document.createElement("p");
+              productPrice.classList.add("text-blue-600", "font-semibold");
+              productPrice.textContent = `R$ ${product.preco.toFixed(2)}`;
+
+              // Adicione todas as informações ao produto
+              productInfo.appendChild(productName);
+              productInfo.appendChild(productDescription);
+              productInfo.appendChild(productPrice);
+
+              productDiv.appendChild(productImage);
+              productDiv.appendChild(productInfo);
+
+              productsContainer.appendChild(productDiv);
+            }
+          })
+
+          .catch((error) => {
+            console.error(error.message);
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Ração para Cães",
+      "categoria": "Alimentos",
+      "descricao": "Ração balanceada para cães de todas as idades.",
+      "preco": 39.99,
+      "estoque": 100,
+      "imagem_url": "https://images.petz.com.br/fotos/1663617053912.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "Coleira de Couro",
+      "categoria": "Acessórios",
+      "descricao": "Coleira de couro legítimo para cães de médio porte.",
+      "preco": 15.99,
+      "estoque": 50,
+      "imagem_url": "https://images.tcdn.com.br/img/img_prod/899793/coleira_para_cachorro_em_couro_friend_ouro_5_1_5f0a3e06f0d1b4f834b3b1eca9d25169.png"
+    },
+    {
+      "id": 3,
+      "nome": "Brinquedo para Gatos",
+      "categoria": "Brinquedos",
+      "descricao": "Bola de pelúcia para gatos se divertirem.",
+      "preco": 9.99,
+      "estoque": 80,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 4,
+      "nome": "Shampoo para Banho",
+      "categoria": "Higiene",
+      "descricao": "Shampoo suave para banho de cachorros.",
+      "preco": 12.99,
+      "estoque": 60,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 5,
+      "nome": "Caixa de Areia para Gatos",
+      "categoria": "Acessórios",
+      "descricao": "Caixa de areia higiênica para gatos.",
+      "preco": 24.99,
+      "estoque": 40,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 6,
+      "nome": "Brinquedo Mastigável para Cães",
+      "categoria": "Brinquedos",
+      "descricao": "Osso de borracha resistente para cães mastigarem.",
+      "preco": 8.99,
+      "estoque": 75,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 7,
+      "nome": "Cama Acolchoada para Gatos",
+      "categoria": "Acessórios",
+      "descricao": "Cama macia e confortável para gatos dormirem.",
+      "preco": 19.99,
+      "estoque": 30,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 8,
+      "nome": "Shampoo Seco para Gatos",
+      "categoria": "Higiene",
+      "descricao": "Shampoo em spray para gatos limparem-se.",
+      "preco": 14.99,
+      "estoque": 45,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 9,
+      "nome": "Ração Premium para Cães",
+      "categoria": "Alimentos",
+      "descricao": "Ração premium com ingredientes selecionados para cães.",
+      "preco": 49.99,
+      "estoque": 55,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 10,
+      "nome": "Coleira com Luz LED",
+      "categoria": "Acessórios",
+      "descricao": "Coleira com luz LED para maior visibilidade noturna de cães.",
+      "preco": 17.99,
+      "estoque": 25,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 11,
+      "nome": "Bebedouro Automático para Gatos",
+      "categoria": "Acessórios",
+      "descricao": "Bebedouro com sistema de fluxo constante de água para gatos.",
+      "preco": 29.99,
+      "estoque": 35,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 12,
+      "nome": "Roupa de Inverno para Cães",
+      "categoria": "Acessórios",
+      "descricao": "Roupa de inverno quente e confortável para cães.",
+      "preco": 22.99,
+      "estoque": 20,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 13,
+      "nome": "Comedouro Duplo para Gatos",
+      "categoria": "Acessórios",
+      "descricao": "Comedouro duplo para gatos com tigelas de comida e água.",
+      "preco": 12.99,
+      "estoque": 40,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 14,
+      "nome": "Brinquedo Interativo para Cães",
+      "categoria": "Brinquedos",
+      "descricao": "Brinquedo interativo que estimula a mente de cães.",
+      "preco": 11.99,
+      "estoque": 60,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    },
+    {
+      "id": 15,
+      "nome": "Escova de Massagem para Gatos",
+      "categoria": "Higiene",
+      "descricao": "Escova de massagem para gatos relaxarem e reduzirem estresse.",
+      "preco": 7.99,
+      "estoque": 70,
+      "imagem_url": "https://mtek3d.com/wp-content/uploads/2018/01/image-placeholder-500x500.jpg"
+    }
+  ]
+}
