@@ -23,7 +23,7 @@ function createWindow () {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('cadastroPet/cadastroPet.html')
+  mainWindow.loadFile('login/login.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

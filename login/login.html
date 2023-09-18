@@ -64,33 +64,45 @@
           >
         </p>
       </div>
+
+      <!-- Área para exibir mensagens -->
+      <div id="messageArea" class="mt-4 text-center text-red-500"></div>
     </div>
 
     <script>
-        function userExists(email) {
-          return localStorage.getItem(email) !== null;
+      function userExists(email) {
+        return localStorage.getItem(email) !== null;
+      }
+
+      const loginForm = document.getElementById("loginForm");
+      const messageArea = document.getElementById("messageArea");
+
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        if (email === "" || password === "") {
+          showMessage("Preencha todos os campos.");
+          return;
         }
-      
-        const loginForm = document.getElementById("loginForm");
-      
-        loginForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-      
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
-      
-          if (userExists(email) && localStorage.getItem(email) === password) {
-            alert("Login realizado com sucesso");
+
+        if (userExists(email) && localStorage.getItem(email) === password) {
+          showMessage("Login realizado com sucesso.", "text-green-500");
+          setTimeout(function () {
             window.location.href = "../home/home.html";
-          } else {
-            alert("E-mail ou senha incorretos");
-          }
-      
-          if (email === "" || password === "") {
-            alert("Preencha todos os campos");
-            return;
-          }
-        });
-      </script>
+          }, 2000); // Redireciona após 2 segundos
+        } else {
+          showMessage("E-mail ou senha incorretos.");
+        }
+      });
+
+      // Função para exibir mensagens na área de mensagem
+      function showMessage(message, colorClass = "text-red-500") {
+        messageArea.textContent = message;
+        messageArea.className = `mt-4 text-center ${colorClass}`;
+      }
+    </script>
   </body>
 </html>
