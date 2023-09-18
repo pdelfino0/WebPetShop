@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de Produtos</title>
+    <!-- Inclui o arquivo CSS do Tailwind CSS para estilização -->
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
       rel="stylesheet"
     />
   </head>
   <body class="bg-gray-100">
+    <!-- Barra de navegação -->
     <nav class="bg-blue-900 text-white sticky">
       <div class="container mx-auto py-4">
         <div class="flex justify-center space-x-8">
@@ -36,7 +38,9 @@
         </div>
       </div>
     </nav>
+    <!-- Título da página -->
     <h1 class="text-3xl font-semibold my-6 text-center">Lista de Produtos</h1>
+    <!-- Contêiner para a lista de produtos -->
     <div class="flex flex-col gap-4 items-center">
       <div class="w-full max-w-md p-4 bg-white rounded-lg shadow-md">
         <div class="text-lg font-semibold">Nossos Produtos</div>
@@ -48,8 +52,11 @@
       </div>
     </div>
 
+    <!-- Script JavaScript -->
     <script>
+      // O código JavaScript é executado após o carregamento completo do DOM
       document.addEventListener("DOMContentLoaded", function () {
+        // Realiza uma solicitação para buscar dados de produtos no arquivo JSON
         fetch("../dados/products.json")
           .then((response) => {
             if (!response.ok) {
@@ -58,9 +65,12 @@
             return response.json();
           })
           .then((data) => {
+            // Obtém uma referência ao contêiner de produtos
             const productsContainer = document.querySelector(".products");
+            // Itera sobre os dados dos produtos e cria elementos HTML para cada produto
             data.produtos.forEach((product) => {
               const productDiv = document.createElement("div");
+              // Aplica classes de estilo do Tailwind CSS ao elemento do produto
               productDiv.classList.add(
                 "p-4",
                 "bg-white",
@@ -74,12 +84,14 @@
               const productImage = document.createElement("img");
               productImage.setAttribute("src", product.imagem_url);
               productImage.setAttribute("alt", product.nome);
-              productImage.classList.add("w-32", "h-auto", "mr-4"); // Tamanho da imagem
+              productImage.classList.add("w-32", "h-auto", "mr-4"); // Define o tamanho da imagem
               productDiv.appendChild(productImage);
 
+              // Cria uma div para informações do produto
               const productInfo = document.createElement("div");
               productInfo.classList.add("flex", "flex-col"); // Cria uma coluna para informações
 
+              // Define o HTML interno da div de informações com base nos dados do produto
               productInfo.innerHTML = `
                 <h2 class="text-xl font-semibold">${product.nome}</h2>
                 <p class="text-gray-700">${product.descricao}</p>
@@ -88,7 +100,9 @@
                 )}</p>
               `;
 
+              // Adiciona a div de informações ao elemento do produto
               productDiv.appendChild(productInfo);
+              // Adiciona o elemento do produto ao contêiner de produtos
               productsContainer.appendChild(productDiv);
             });
           })

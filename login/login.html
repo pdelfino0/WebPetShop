@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <!-- Inclui o arquivo CSS do Tailwind CSS para estilização -->
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
       rel="stylesheet"
@@ -11,9 +12,13 @@
     <title>Formulário de Login</title>
   </head>
   <body class="bg-gray-100 flex justify-center items-center h-screen">
+    <!-- Um contêiner que centraliza o conteúdo na tela -->
     <div class="bg-white p-8 rounded-xl shadow-md w-96">
+      <!-- Título da página -->
       <h1 class="text-2xl font-semibold mb-4">Acesse à WebPetShop</h1>
+      <!-- Formulário de login -->
       <form id="loginForm">
+        <!-- Campo de entrada de e-mail -->
         <div class="mb-4">
           <label for="email" class="block text-gray-700 font-semibold mb-2"
             >E-mail</label
@@ -25,6 +30,7 @@
             class="w-full border border-gray-300 rounded-xl px-3 py-2"
           />
         </div>
+        <!-- Campo de entrada de senha -->
         <div class="mb-4">
           <label for="password" class="block text-gray-700 font-semibold mb-2"
             >Senha</label
@@ -37,6 +43,7 @@
           />
         </div>
       </form>
+      <!-- Links para "Esqueceu a senha?" e "Registrar" -->
       <div class="flex items-center gap-2">
         <p>Esqueceu a senha?</p>
         <a href="esqueceuSenha.html"
@@ -45,7 +52,7 @@
       </div>
       <br />
       <hr />
-
+      <!-- Botão de login -->
       <div class="flex justify-center mt-4">
         <button
           type="submit"
@@ -55,7 +62,7 @@
           Entrar
         </button>
       </div>
-
+      <!-- Link para registro -->
       <div class="mt-4 text-center">
         <p>
           Não tem uma conta?
@@ -64,35 +71,40 @@
           >
         </p>
       </div>
-
       <!-- Área para exibir mensagens -->
       <div id="messageArea" class="mt-4 text-center text-red-500"></div>
     </div>
 
     <script>
+      // Função para verificar se o usuário existe com base no e-mail
       function userExists(email) {
         return localStorage.getItem(email) !== null;
       }
 
+      // Obtém referências aos elementos HTML
       const loginForm = document.getElementById("loginForm");
       const messageArea = document.getElementById("messageArea");
 
+      // Adiciona um ouvinte de evento para o formulário de login
       loginForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+        e.preventDefault(); // Impede o envio padrão do formulário
 
+        // Obtém os valores do e-mail e senha do formulário
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
+        // Verifica se os campos de e-mail e senha estão vazios
         if (email === "" || password === "") {
           showMessage("Preencha todos os campos.");
           return;
         }
 
+        // Verifica se o usuário existe e a senha está correta
         if (userExists(email) && localStorage.getItem(email) === password) {
           showMessage("Login realizado com sucesso.", "text-green-500");
           setTimeout(function () {
-            window.location.href = "../home/home.html";
-          }, 2000); // Redireciona após 2 segundos
+            window.location.href = "../home/home.html"; // Redireciona após 2 segundos
+          }, 2000);
         } else {
           showMessage("E-mail ou senha incorretos.");
         }

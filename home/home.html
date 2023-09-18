@@ -4,17 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Petshop - Produtos</title>
+    <!-- Inclui o arquivo CSS do Tailwind CSS para estilização -->
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <!-- Define o ícone da página na aba do navegador -->
     <link rel="icon" type="image/x-icon" href="favicon.png" />
   </head>
   <body class="bg-gray-100">
-    <!-- Navbar -->
+    <!-- Navbar (Barra de Navegação) -->
     <nav class="bg-blue-900 text-white p-4">
       <div class="container mx-auto">
         <div class="flex justify-center space-x-8">
+          <!-- Links de navegação para diferentes seções do site -->
           <a
             href="../home/home.html"
             class="text-xl font-semibold hover:underline"
@@ -39,6 +42,7 @@
 
     <!-- Conteúdo da Página -->
     <div class="container mx-auto my-8 px-4">
+      <!-- Título da página -->
       <h1 class="text-3xl font-semibold mb-6">Nossos Produtos</h1>
 
       <!-- Barra de Pesquisa -->
@@ -47,12 +51,14 @@
           >Buscar:</label
         >
         <div class="relative">
+          <!-- Campo de entrada de texto para pesquisa -->
           <input
             type="text"
             id="searchInput"
             class="w-full p-2 border border-gray-300 rounded-xl pr-10"
             placeholder="Pesquisar..."
           />
+          <!-- Botão de pesquisa -->
           <button
             id="searchButton"
             class="absolute inset-y-0 right-0 px-4 py-2 bg-blue-900 text-white font-semibold rounded-xl"
@@ -74,6 +80,7 @@
       </div>
     </div>
 
+    <!-- Inclui o arquivo JavaScript "home.js" -->
     <script src="home.js"></script>
   </body>
 </html>

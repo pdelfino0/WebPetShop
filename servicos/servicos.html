@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de Serviços</title>
+    <!-- Inclui o arquivo CSS do Tailwind CSS para estilização -->
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
       rel="stylesheet"
     />
   </head>
   <body class="bg-gray-100">
+    <!-- Barra de navegação -->
     <nav class="bg-blue-900 text-white sticky">
       <div class="container mx-auto py-4">
         <div class="flex justify-center space-x-8">
@@ -32,7 +34,9 @@
         </div>
       </div>
     </nav>
+    <!-- Título da página -->
     <h1 class="text-3xl font-semibold my-6 text-center">Lista de Serviços</h1>
+    <!-- Contêiner para a lista de serviços -->
     <div class="flex flex-col gap-4 items-center">
       <div class="w-full max-w-md p-4 bg-white rounded-lg shadow-md">
         <div class="text-lg font-semibold">Nossos Serviços</div>
@@ -44,8 +48,11 @@
       </div>
     </div>
 
+    <!-- Script JavaScript -->
     <script>
+      // O código JavaScript é executado após o carregamento completo do DOM
       document.addEventListener("DOMContentLoaded", function () {
+        // Realiza uma solicitação para buscar dados de serviços no arquivo JSON
         fetch("../dados/services.json")
           .then((response) => {
             if (!response.ok) {
@@ -54,9 +61,12 @@
             return response.json();
           })
           .then((data) => {
+            // Obtém uma referência ao contêiner de serviços
             const servicesContainer = document.querySelector(".services");
+            // Itera sobre os dados dos serviços e cria elementos HTML para cada serviço
             data.servicos.forEach((service) => {
               const serviceDiv = document.createElement("div");
+              // Aplica classes de estilo do Tailwind CSS ao elemento do serviço
               serviceDiv.classList.add(
                 "p-4",
                 "bg-white",
@@ -70,12 +80,14 @@
               const serviceImage = document.createElement("img");
               serviceImage.setAttribute("src", service.imagem_url);
               serviceImage.setAttribute("alt", service.nome);
-              serviceImage.classList.add("w-32", "h-auto", "mr-4"); // Tamanho da imagem
+              serviceImage.classList.add("w-32", "h-auto", "mr-4"); // Define o tamanho da imagem
               serviceDiv.appendChild(serviceImage);
 
+              // Cria uma div para informações do serviço
               const serviceInfo = document.createElement("div");
               serviceInfo.classList.add("flex", "flex-col"); // Cria uma coluna para informações
 
+              // Define o HTML interno da div de informações com base nos dados do serviço
               serviceInfo.innerHTML = `
                 <h2 class="text-xl font-semibold">${service.nome}</h2>
                 <p class="text-gray-700">${service.descricao}</p>
@@ -83,7 +95,9 @@
                 <a class="text-green-600  hover:text-green-800 font-semibold mt-2" href="../agendamento/agendarServico.html"> Agendar Serviço </a>
               `;
 
+              // Adiciona a div de informações ao elemento do serviço
               serviceDiv.appendChild(serviceInfo);
+              // Adiciona o elemento do serviço ao contêiner de serviços
               servicesContainer.appendChild(serviceDiv);
             });
           })
